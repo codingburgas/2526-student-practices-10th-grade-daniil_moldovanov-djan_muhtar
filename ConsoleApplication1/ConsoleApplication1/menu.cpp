@@ -1,5 +1,6 @@
 #include <iostream>
 #include "menu.h"
+#include "a.h"
 
 using namespace std;
 
@@ -48,9 +49,19 @@ void handleMenuChoice(int choice)
         cout << "Showing your bookings...\n";
         break;
 
+
     case 4:
-        cout << "Opening admin panel...\n";
+    {
+        Admin admin;
+        if (admin.login()) {
+            admin.adminMenu();
+        }
+        else {
+            cout << "Access denied!\n";
+        }
         break;
+    }
+
 
     case 0:
         cout << "Exiting system...\n";
