@@ -7,7 +7,7 @@ using namespace std;
 Admin::Admin()
 {
     username = "admin";
-    password = "admin123";
+    password = "123";
 }
 
 bool Admin::login()

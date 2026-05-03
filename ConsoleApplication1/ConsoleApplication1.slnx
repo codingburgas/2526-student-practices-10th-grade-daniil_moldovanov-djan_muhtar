@@ -5,5 +5,7 @@
   </Configurations>
   <Project Path="ConsoleApplication1/ConsoleApplication1.vcxproj" Id="9f33aaaa-aa3a-4152-a730-08dd4295128b" />
   <Project Path="Project1/Project1.vcxproj" Id="254ed487-6442-40f6-9c72-7fa8604c8d96" />
-  <Project Path="Project2/Project2.vcxproj" Id="754ac030-ee74-4cd4-b7aa-b1a8fed1353c" />
+  <Project Path="Project2/Project2.vcxproj" Id="754ac030-ee74-4cd4-b7aa-b1a8fed1353c">
+    <Build Solution="Debug|x64" Project="false" />
+  </Project>
 </Solution>
