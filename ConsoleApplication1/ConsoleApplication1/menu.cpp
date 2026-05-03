@@ -1,7 +1,7 @@
 #include <iostream>
 #include "menu.h"
-#include "a.h"
-
+#include "admin.h"
+#include "movie.h"
 using namespace std;
 
 void showMenu()
@@ -18,6 +18,7 @@ void showMenu()
 int getMenuChoice()
 {
     int choice;
+
     cout << "Choice: ";
     cin >> choice;
 
@@ -30,6 +31,7 @@ int getMenuChoice()
     }
 
     cin.ignore(1000, '\n');
+
     return choice;
 }
 
@@ -38,30 +40,32 @@ void handleMenuChoice(int choice)
     switch (choice)
     {
     case 1:
-        cout << "Showing movie list...\n";
+        listMovies();
         break;
 
     case 2:
-        cout << "Booking a ticket...\n";
+        cout << "Booking a ticket is not ready yet.\n";
         break;
 
     case 3:
-        cout << "Showing your bookings...\n";
+        cout << "View bookings is not ready yet.\n";
         break;
-
 
     case 4:
     {
         Admin admin;
-        if (admin.login()) {
+
+        if (admin.login())
+        {
             admin.adminMenu();
         }
-        else {
+        else
+        {
             cout << "Access denied!\n";
         }
+
         break;
     }
-
 
     case 0:
         cout << "Exiting system...\n";
