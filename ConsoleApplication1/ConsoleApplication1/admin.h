@@ -1,10 +1,11 @@
 #pragma once
 #include <string>
+using namespace std;
 
 class Admin {
 private:
-    std::string username;
-    std::string password;
+    string username;
+    string password;
 
 public:
     Admin();

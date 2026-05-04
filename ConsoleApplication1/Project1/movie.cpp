@@ -1,6 +1,7 @@
 #include "movie.h"
 #include <iostream>
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -33,6 +34,44 @@ void listMovies()
         cout << "-------------------------\n";
     }
 }
+void loadMoviesFromFile()
+{
+    ifstream file("movies.txt");
+
+    if (!file.is_open())
+        return;
+
+    movieCount = 0;
+
+    while (getline(file, movieTitles[movieCount], '|') &&
+        getline(file, movieLanguages[movieCount], '|') &&
+        getline(file, movieGenres[movieCount], '|') &&
+        getline(file, movieReleaseDates[movieCount]))
+    {
+        movieCount++;
+        if (movieCount >= MAX_MOVIES)
+            break;
+    }
+
+    file.close();
+}
+
+void saveMoviesToFile()
+{
+    ofstream file("movies.txt");
+
+    for (int i = 0; i < movieCount; i++)
+    {
+        file << movieTitles[i] << "|"
+            << movieLanguages[i] << "|"
+            << movieGenres[i] << "|"
+            << movieReleaseDates[i] << "\n";
+    }
+
+    file.close();
+}
+
+#include <limits>
 
 void addMovie()
 {
@@ -41,6 +80,8 @@ void addMovie()
         cout << "Cannot add more movies.\n";
         return;
     }
+
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     cout << "\n--- ADD MOVIE ---\n";
 
@@ -57,9 +98,11 @@ void addMovie()
     getline(cin, movieReleaseDates[movieCount]);
 
     movieCount++;
+    saveMoviesToFile();
 
     cout << "Movie added successfully!\n";
 }
+
 
 void deleteMovie()
 {
@@ -72,7 +115,6 @@ void deleteMovie()
     listMovies();
 
     int number;
-
     cout << "Enter movie number to delete: ";
     cin >> number;
     cin.ignore(1000, '\n');
@@ -94,6 +136,8 @@ void deleteMovie()
     }
 
     movieCount--;
+    saveMoviesToFile();
 
     cout << "Movie deleted successfully!\n";
 }
+

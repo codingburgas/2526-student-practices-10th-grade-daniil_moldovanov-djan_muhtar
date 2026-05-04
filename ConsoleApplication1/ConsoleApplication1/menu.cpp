@@ -17,23 +17,12 @@ void showMenu()
 
 int getMenuChoice()
 {
-    int choice;
-
+    string input;
     cout << "Choice: ";
-    cin >> choice;
-
-    while (cin.fail())
-    {
-        cin.clear();
-        cin.ignore(1000, '\n');
-        cout << "Invalid input! Enter a number: ";
-        cin >> choice;
-    }
-
-    cin.ignore(1000, '\n');
-
-    return choice;
+    getline(cin, input);
+    return stoi(input);
 }
+
 
 void handleMenuChoice(int choice)
 {

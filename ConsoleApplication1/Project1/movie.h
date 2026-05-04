@@ -4,3 +4,7 @@
 void listMovies();
 void addMovie();
 void deleteMovie();
+
+
+void loadMoviesFromFile();
+void saveMoviesToFile();
